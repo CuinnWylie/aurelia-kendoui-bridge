@@ -639,9 +639,10 @@ declare module 'aurelia-kendoui-bridge' {
     destroy(): any;
     detached(): any;
   }
-  export class DateTimePicker {
+  export class DateRangePicker {
     kEnabled: any;
     kReadOnly: any;
+    kRange: any;
     constructor(element?: any, widgetBase?: any);
     subscribe(event?: any, callback?: any): any;
     bind(ctx?: any, overrideCtx?: any): any;
@@ -651,10 +652,9 @@ declare module 'aurelia-kendoui-bridge' {
     destroy(): any;
     detached(): any;
   }
-  export class DateRangePicker {
+  export class DateTimePicker {
     kEnabled: any;
     kReadOnly: any;
-    kRange: any;
     constructor(element?: any, widgetBase?: any);
     subscribe(event?: any, callback?: any): any;
     bind(ctx?: any, overrideCtx?: any): any;
@@ -755,13 +755,8 @@ declare module 'aurelia-kendoui-bridge' {
     destroy(): any;
     detached(): any;
   }
-  export class GanttCol {
-  
-  }
-  
-  //eslint-disable-line no-unused-vars
-  export class Gantt {
-    constructor(element?: any, widgetBase?: any, container?: any, optionsBuilder?: any);
+  export class FlatColorPicker {
+    constructor(element?: any, widgetBase?: any);
     subscribe(event?: any, callback?: any): any;
     bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
@@ -769,8 +764,13 @@ declare module 'aurelia-kendoui-bridge' {
     destroy(): any;
     detached(): any;
   }
-  export class FlatColorPicker {
-    constructor(element?: any, widgetBase?: any);
+  export class GanttCol {
+  
+  }
+  
+  //eslint-disable-line no-unused-vars
+  export class Gantt {
+    constructor(element?: any, widgetBase?: any, container?: any, optionsBuilder?: any);
     subscribe(event?: any, callback?: any): any;
     bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
@@ -984,15 +984,6 @@ declare module 'aurelia-kendoui-bridge' {
     destroy(): any;
     detached(): any;
   }
-  export class QRCode {
-    constructor(element?: any, widgetBase?: any);
-    subscribe(event?: any, callback?: any): any;
-    bind(ctx?: any, overrideCtx?: any): any;
-    attached(): any;
-    recreate(): any;
-    destroy(): any;
-    detached(): any;
-  }
   export class ProgressBar {
     kEnabled: any;
     constructor(element?: any, widgetBase?: any);
@@ -1001,6 +992,15 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
+    destroy(): any;
+    detached(): any;
+  }
+  export class QRCode {
+    constructor(element?: any, widgetBase?: any);
+    subscribe(event?: any, callback?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
+    attached(): any;
+    recreate(): any;
     destroy(): any;
     detached(): any;
   }

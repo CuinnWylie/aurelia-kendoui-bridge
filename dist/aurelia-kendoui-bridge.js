@@ -553,7 +553,7 @@ export function configure(aurelia, configCallback) {
 
 
 
-export let version = '1.10.1';
+export let version = '1.10.2';
 @customElement(`${constants.elementPrefix}autocomplete`)
 @generateBindables('kendoAutoComplete')
 @inject(Element, WidgetBase, Container)
@@ -2305,20 +2305,21 @@ export class DatePicker {
   }
 }
 
-@customAttribute(`${constants.attributePrefix}datetimepicker`)
-@generateBindables('kendoDateTimePicker')
+@customAttribute(`${constants.attributePrefix}daterangepicker`)
+@generateBindables('kendoDateRangePicker')
 @inject(Element, WidgetBase)
-export class DateTimePicker {
+export class DateRangePicker {
   @bindable kEnabled;
   @bindable kReadOnly;
+  @bindable({defaultBindingMode: 2}) kRange;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-      .control('kendoDateTimePicker')
+      .control('kendoDateRangePicker')
       .useElement(this.element)
       .linkViewModel(this)
-      .useValueBinding()
+      .useValueBinding('kRange', 'range')
       .bindToKendo('kEnabled', 'enable')
       .bindToKendo('kReadOnly', 'readonly');
   }
@@ -2354,21 +2355,20 @@ export class DateTimePicker {
   }
 }
 
-@customAttribute(`${constants.attributePrefix}daterangepicker`)
-@generateBindables('kendoDateRangePicker')
+@customAttribute(`${constants.attributePrefix}datetimepicker`)
+@generateBindables('kendoDateTimePicker')
 @inject(Element, WidgetBase)
-export class DateRangePicker {
+export class DateTimePicker {
   @bindable kEnabled;
   @bindable kReadOnly;
-  @bindable({defaultBindingMode: 2}) kRange;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-      .control('kendoDateRangePicker')
+      .control('kendoDateTimePicker')
       .useElement(this.element)
       .linkViewModel(this)
-      .useValueBinding('kRange', 'range')
+      .useValueBinding()
       .bindToKendo('kEnabled', 'enable')
       .bindToKendo('kReadOnly', 'readonly');
   }
@@ -2817,6 +2817,45 @@ export class FilterMenu {
   }
 }
 
+@customElement(`${constants.attributePrefix}flat-color-picker`)
+@generateBindables('kendoFlatColorPicker')
+@inject(Element, WidgetBase)
+export class FlatColorPicker {
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+      .control('kendoFlatColorPicker')
+      .useElement(this.element)
+      .linkViewModel(this);
+  }
+
+  subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  }
+
+  bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
+  }
+
+  attached() {
+    if (!this.kNoInit) {
+      this.recreate();
+    }
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.recreate();
+  }
+
+  destroy() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+
+  detached() {
+    this.destroy();
+  }
+}
+
 @customElement(`${constants.elementPrefix}gantt-col`)
 @generateBindables('GanttColumn')
 @inject(TemplateGatherer)
@@ -2892,45 +2931,6 @@ export class Gantt  {
 
 function isInitFromDiv(element) {
   return element.querySelectorAll('div').length > 0;
-}
-
-@customElement(`${constants.attributePrefix}flat-color-picker`)
-@generateBindables('kendoFlatColorPicker')
-@inject(Element, WidgetBase)
-export class FlatColorPicker {
-  constructor(element, widgetBase) {
-    this.element = element;
-    this.widgetBase = widgetBase
-      .control('kendoFlatColorPicker')
-      .useElement(this.element)
-      .linkViewModel(this);
-  }
-
-  subscribe(event, callback) {
-    return this.widgetBase.subscribe(event, callback);
-  }
-
-  bind(ctx, overrideCtx) {
-    this.widgetBase.useParentCtx(overrideCtx);
-  }
-
-  attached() {
-    if (!this.kNoInit) {
-      this.recreate();
-    }
-  }
-
-  recreate() {
-    this.kWidget = this.widgetBase.recreate();
-  }
-
-  destroy() {
-    this.widgetBase.destroy(this.kWidget);
-  }
-
-  detached() {
-    this.destroy();
-  }
 }
 
 @customElement(`${constants.elementPrefix}arc-gauge`)
@@ -3931,45 +3931,6 @@ export class Popup {
   }
 }
 
-@customAttribute(`${constants.attributePrefix}qrcode`)
-@generateBindables('kendoQRCode')
-@inject(Element, WidgetBase)
-export class QRCode {
-  constructor(element, widgetBase) {
-    this.element = element;
-    this.widgetBase = widgetBase
-      .control('kendoQRCode')
-      .useElement(this.element)
-      .linkViewModel(this);
-  }
-
-  subscribe(event, callback) {
-    return this.widgetBase.subscribe(event, callback);
-  }
-
-  bind(ctx, overrideCtx) {
-    this.widgetBase.useParentCtx(overrideCtx);
-  }
-
-  attached() {
-    if (!this.kNoInit) {
-      this.recreate();
-    }
-  }
-
-  recreate() {
-    this.kWidget = this.widgetBase.recreate();
-  }
-
-  destroy() {
-    this.widgetBase.destroy(this.kWidget);
-  }
-
-  detached() {
-    this.destroy();
-  }
-}
-
 @customAttribute(`${constants.attributePrefix}progress-bar`)
 @generateBindables('kendoProgressBar')
 @inject(Element, WidgetBase)
@@ -4005,6 +3966,45 @@ export class ProgressBar {
 
   propertyChanged(property, newValue, oldValue) {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+  }
+
+  destroy() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+
+  detached() {
+    this.destroy();
+  }
+}
+
+@customAttribute(`${constants.attributePrefix}qrcode`)
+@generateBindables('kendoQRCode')
+@inject(Element, WidgetBase)
+export class QRCode {
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+      .control('kendoQRCode')
+      .useElement(this.element)
+      .linkViewModel(this);
+  }
+
+  subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  }
+
+  bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
+  }
+
+  attached() {
+    if (!this.kNoInit) {
+      this.recreate();
+    }
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.recreate();
   }
 
   destroy() {
