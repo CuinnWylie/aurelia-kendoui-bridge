@@ -218,6 +218,17 @@ declare module 'aurelia-kendoui-bridge' {
     destroy(): any;
     detached(): any;
   }
+  export class Chat {
+    kEnabled: any;
+    constructor(element?: any, widgetBase?: any);
+    subscribe(event?: any, callback?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
+    attached(): any;
+    recreate(): any;
+    propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
+    destroy(): any;
+    detached(): any;
+  }
   
   //eslint-disable-line no-unused-vars
   export class Chart {
@@ -259,17 +270,6 @@ declare module 'aurelia-kendoui-bridge' {
     bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
-    destroy(): any;
-    detached(): any;
-  }
-  export class Chat {
-    kEnabled: any;
-    constructor(element?: any, widgetBase?: any);
-    subscribe(event?: any, callback?: any): any;
-    bind(ctx?: any, overrideCtx?: any): any;
-    attached(): any;
-    recreate(): any;
-    propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
     destroy(): any;
     detached(): any;
   }
@@ -664,7 +664,7 @@ declare module 'aurelia-kendoui-bridge' {
     destroy(): any;
     detached(): any;
   }
-  export class Diagram {
+  export class Dialog {
     constructor(element?: any, widgetBase?: any);
     subscribe(event?: any, callback?: any): any;
     bind(ctx?: any, overrideCtx?: any): any;
@@ -673,7 +673,7 @@ declare module 'aurelia-kendoui-bridge' {
     destroy(): any;
     detached(): any;
   }
-  export class Dialog {
+  export class Diagram {
     constructor(element?: any, widgetBase?: any);
     subscribe(event?: any, callback?: any): any;
     bind(ctx?: any, overrideCtx?: any): any;
@@ -1186,15 +1186,6 @@ declare module 'aurelia-kendoui-bridge' {
     destroy(): any;
     detached(): any;
   }
-  export class Validator {
-    constructor(element?: any, widgetBase?: any);
-    subscribe(event?: any, callback?: any): any;
-    bind(ctx?: any, overrideCtx?: any): any;
-    attached(): any;
-    recreate(): any;
-    destroy(): any;
-    detached(): any;
-  }
   export class kendoToStringValueConverter {
     toView(value?: any, format?: any, language?: any): any;
   }
@@ -1217,6 +1208,15 @@ declare module 'aurelia-kendoui-bridge' {
     toView(value?: any, ...params: any[]): any;
   }
   export class Window {
+    constructor(element?: any, widgetBase?: any);
+    subscribe(event?: any, callback?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
+    attached(): any;
+    recreate(): any;
+    destroy(): any;
+    detached(): any;
+  }
+  export class Validator {
     constructor(element?: any, widgetBase?: any);
     subscribe(event?: any, callback?: any): any;
     bind(ctx?: any, overrideCtx?: any): any;

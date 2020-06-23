@@ -553,7 +553,7 @@ export function configure(aurelia, configCallback) {
 
 
 
-export let version = '1.10.0';
+export let version = '1.10.1';
 @customElement(`${constants.elementPrefix}autocomplete`)
 @generateBindables('kendoAutoComplete')
 @inject(Element, WidgetBase, Container)
@@ -788,6 +788,52 @@ export class Calendar {
   }
 }
 
+@customAttribute(`${constants.attributePrefix}chat`)
+@generateBindables('kendoChat')
+@inject(Element, WidgetBase)
+export class Chat {
+  @bindable kEnabled;
+
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+      .control('kendoChat')
+      .useElement(this.element)
+      .bindToKendo('kEnabled', 'enable')
+      .linkViewModel(this);
+  }
+
+  subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  }
+
+  bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
+  }
+
+  attached() {
+    if (!this.kNoInit) {
+      this.recreate();
+    }
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.recreate();
+  }
+
+  propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+  }
+
+  destroy() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+
+  detached() {
+    this.destroy();
+  }
+}
+
 //eslint-disable-line no-unused-vars
 
 @customElement(`${constants.elementPrefix}chart`)
@@ -941,52 +987,6 @@ export class TreeMap {
 
   recreate() {
     this.kWidget = this.widgetBase.recreate();
-  }
-
-  destroy() {
-    this.widgetBase.destroy(this.kWidget);
-  }
-
-  detached() {
-    this.destroy();
-  }
-}
-
-@customAttribute(`${constants.attributePrefix}chat`)
-@generateBindables('kendoChat')
-@inject(Element, WidgetBase)
-export class Chat {
-  @bindable kEnabled;
-
-  constructor(element, widgetBase) {
-    this.element = element;
-    this.widgetBase = widgetBase
-      .control('kendoChat')
-      .useElement(this.element)
-      .bindToKendo('kEnabled', 'enable')
-      .linkViewModel(this);
-  }
-
-  subscribe(event, callback) {
-    return this.widgetBase.subscribe(event, callback);
-  }
-
-  bind(ctx, overrideCtx) {
-    this.widgetBase.useParentCtx(overrideCtx);
-  }
-
-  attached() {
-    if (!this.kNoInit) {
-      this.recreate();
-    }
-  }
-
-  recreate() {
-    this.kWidget = this.widgetBase.recreate();
-  }
-
-  propertyChanged(property, newValue, oldValue) {
-    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
   destroy() {
@@ -2404,14 +2404,14 @@ export class DateTimePicker {
   }
 }
 
-@customElement(`${constants.elementPrefix}diagram`)
-@generateBindables('kendoDiagram')
+@customAttribute(`${constants.attributePrefix}dialog`)
+@generateBindables('kendoDialog')
 @inject(Element, WidgetBase)
-export class Diagram {
+export class Dialog {
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-      .control('kendoDiagram')
+      .control('kendoDialog')
       .useElement(this.element)
       .linkViewModel(this);
   }
@@ -2443,14 +2443,14 @@ export class Diagram {
   }
 }
 
-@customAttribute(`${constants.attributePrefix}dialog`)
-@generateBindables('kendoDialog')
+@customElement(`${constants.elementPrefix}diagram`)
+@generateBindables('kendoDiagram')
 @inject(Element, WidgetBase)
-export class Dialog {
+export class Diagram {
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-      .control('kendoDialog')
+      .control('kendoDiagram')
       .useElement(this.element)
       .linkViewModel(this);
   }
@@ -4901,45 +4901,6 @@ export class Upload {
   }
 }
 
-@customAttribute(`${constants.attributePrefix}validator`)
-@generateBindables('kendoValidator')
-@inject(Element, WidgetBase)
-export class Validator {
-  constructor(element, widgetBase) {
-    this.element = element;
-    this.widgetBase = widgetBase
-      .control('kendoValidator')
-      .useElement(this.element)
-      .linkViewModel(this);
-  }
-
-  subscribe(event, callback) {
-    return this.widgetBase.subscribe(event, callback);
-  }
-
-  bind(ctx, overrideCtx) {
-    this.widgetBase.useParentCtx(overrideCtx);
-  }
-
-  attached() {
-    if (!this.kNoInit) {
-      this.recreate();
-    }
-  }
-
-  recreate() {
-    this.kWidget = this.widgetBase.recreate();
-  }
-
-  destroy() {
-    this.widgetBase.destroy(this.kWidget);
-  }
-
-  detached() {
-    this.destroy();
-  }
-}
-
 export class kendoToStringValueConverter {
   toView(value, format, language) {
     return kendo.toString(value, format, language);
@@ -4992,6 +4953,45 @@ export class Window {
     this.element = element;
     this.widgetBase = widgetBase
       .control('kendoWindow')
+      .useElement(this.element)
+      .linkViewModel(this);
+  }
+
+  subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  }
+
+  bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
+  }
+
+  attached() {
+    if (!this.kNoInit) {
+      this.recreate();
+    }
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.recreate();
+  }
+
+  destroy() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+
+  detached() {
+    this.destroy();
+  }
+}
+
+@customAttribute(`${constants.attributePrefix}validator`)
+@generateBindables('kendoValidator')
+@inject(Element, WidgetBase)
+export class Validator {
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+      .control('kendoValidator')
       .useElement(this.element)
       .linkViewModel(this);
   }
