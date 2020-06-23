@@ -358,6 +358,11 @@ System.register(['aurelia-logging', 'aurelia-pal'], function (_export, _context)
           return this;
         };
 
+        KendoConfigBuilder.prototype.kendoTextBox = function kendoTextBox() {
+          this.resources.push(PLATFORM.moduleName('./textbox/textbox'));
+          return this;
+        };
+
         KendoConfigBuilder.prototype.kendoTabStrip = function kendoTabStrip() {
           this.resources.push(PLATFORM.moduleName('./tabstrip/tabstrip'));
           return this;

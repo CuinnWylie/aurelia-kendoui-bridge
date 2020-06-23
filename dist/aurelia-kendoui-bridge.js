@@ -437,6 +437,11 @@ export class KendoConfigBuilder {
     return this;
   }
 
+  kendoTextBox(): KendoConfigBuilder {
+    this.resources.push(PLATFORM.moduleName('./textbox/textbox'));
+    return this;
+  }
+
   kendoTabStrip(): KendoConfigBuilder {
     this.resources.push(PLATFORM.moduleName('./tabstrip/tabstrip'));
     return this;
@@ -4463,6 +4468,55 @@ export class TabStrip {
 
   recreate() {
     this.kWidget = this.widgetBase.recreate();
+  }
+
+  destroy() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+
+  detached() {
+    this.destroy();
+  }
+}
+
+@customAttribute(`${constants.attributePrefix}textbox`)
+@generateBindables('kendoTextBox')
+@inject(Element, WidgetBase)
+export class TextBox {
+  @bindable kEnabled;
+  @bindable kReadOnly;
+
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+      .control('kendoTextBox')
+      .linkViewModel(this)
+      .useElement(this.element)
+      .useValueBinding()
+      .bindToKendo('kEnabled', 'enable')
+      .bindToKendo('kReadOnly', 'readonly');
+  }
+
+  subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  }
+
+  bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
+  }
+
+  attached() {
+    if (!this.kNoInit) {
+      this.recreate();
+    }
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.recreate();
+  }
+
+  propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
   destroy() {

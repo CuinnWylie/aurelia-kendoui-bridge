@@ -210,6 +210,7 @@
         "aurelia-kendoui-bridge/qrcode/qrcode",
         "aurelia-kendoui-bridge/gauges/radial-gauge",
         "aurelia-kendoui-bridge/scheduler/scheduler",
+        "aurelia-kendoui-bridge/textbox/textbox",
         "aurelia-kendoui-bridge/treelist/treelist",
         "aurelia-kendoui-bridge/treelist/tree-col",
         "aurelia-kendoui-bridge/treeview/treeview",

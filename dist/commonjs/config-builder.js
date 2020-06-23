@@ -357,6 +357,11 @@ var KendoConfigBuilder = exports.KendoConfigBuilder = function () {
     return this;
   };
 
+  KendoConfigBuilder.prototype.kendoTextBox = function kendoTextBox() {
+    this.resources.push(_aureliaPal.PLATFORM.moduleName('./textbox/textbox'));
+    return this;
+  };
+
   KendoConfigBuilder.prototype.kendoTabStrip = function kendoTabStrip() {
     this.resources.push(_aureliaPal.PLATFORM.moduleName('./tabstrip/tabstrip'));
     return this;

@@ -373,6 +373,11 @@ define(['exports', 'aurelia-logging', 'aurelia-pal'], function (exports, _aureli
       return this;
     };
 
+    KendoConfigBuilder.prototype.kendoTextBox = function kendoTextBox() {
+      this.resources.push(_aureliaPal.PLATFORM.moduleName('./textbox/textbox'));
+      return this;
+    };
+
     KendoConfigBuilder.prototype.kendoTabStrip = function kendoTabStrip() {
       this.resources.push(_aureliaPal.PLATFORM.moduleName('./tabstrip/tabstrip'));
       return this;

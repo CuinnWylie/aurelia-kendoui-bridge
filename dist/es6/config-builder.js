@@ -431,6 +431,11 @@ export class KendoConfigBuilder {
     return this;
   }
 
+  kendoTextBox(): KendoConfigBuilder {
+    this.resources.push(PLATFORM.moduleName('./textbox/textbox'));
+    return this;
+  }
+
   kendoTabStrip(): KendoConfigBuilder {
     this.resources.push(PLATFORM.moduleName('./tabstrip/tabstrip'));
     return this;

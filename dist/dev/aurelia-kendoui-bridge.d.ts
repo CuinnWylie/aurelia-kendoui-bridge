@@ -145,6 +145,7 @@ declare module 'aurelia-kendoui-bridge' {
     kendoSpreadsheet(): KendoConfigBuilder;
     kendoSplitter(): KendoConfigBuilder;
     kendoMobileSwitch(): KendoConfigBuilder;
+    kendoTextBox(): KendoConfigBuilder;
     kendoTabStrip(): KendoConfigBuilder;
     kendoTreeList(): KendoConfigBuilder;
     kendoToolbar(): KendoConfigBuilder;
@@ -1098,6 +1099,18 @@ declare module 'aurelia-kendoui-bridge' {
     bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
+    destroy(): any;
+    detached(): any;
+  }
+  export class TextBox {
+    kEnabled: any;
+    kReadOnly: any;
+    constructor(element?: any, widgetBase?: any);
+    subscribe(event?: any, callback?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
+    attached(): any;
+    recreate(): any;
+    propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
     destroy(): any;
     detached(): any;
   }
