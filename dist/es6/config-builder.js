@@ -48,6 +48,7 @@ export class KendoConfigBuilder {
       .kendoDropDownList()
       .kendoDateTimePicker()
       .kendoDatePicker()
+      .kendoDateRangePicker()
       .kendoDraggable()
       .kendoDropTarget()
       .kendoFlatColorPicker()
@@ -87,7 +88,7 @@ export class KendoConfigBuilder {
 	  .kendoChart()
 	  .kendoChat()
 	  .kendoDiagram()
-	  .kendoDropdownTree()
+	  .kendoDropDownTree()
       .kendoEditor()
       .kendoFilterMenu()
       .kendoGantt()
@@ -228,6 +229,11 @@ export class KendoConfigBuilder {
     return this;
   }
 
+  kendoDateRangePicker(): KendoConfigBuilder {
+    this.resources.push(PLATFORM.moduleName('./daterangepicker/daterangepicker'));
+    return this;
+  }
+
   kendoDiagram(): KendoConfigBuilder {
     this.resources.push(PLATFORM.moduleName('./diagram/diagram'));
     return this;
@@ -290,6 +296,11 @@ export class KendoConfigBuilder {
 
   kendoLinearGauge(): KendoConfigBuilder {
     this.resources.push(PLATFORM.moduleName('./gauges/linear-gauge'));
+    return this;
+  }
+
+  kendoArcGauge(): KendoConfigBuilder {
+    this.resources.push(PLATFORM.moduleName('./gauges/arc-gauge'));
     return this;
   }
 

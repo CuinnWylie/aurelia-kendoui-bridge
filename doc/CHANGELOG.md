@@ -1,3 +1,23 @@
+<a name="1.10.0"></a>
+# [1.10.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.9.9...1.10.0) (2020-03-01)
+
+
+### Features
+
+* **arc-gauge:** added arc-gauge ([5078813](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/5078813))
+
+<a name="1.9.0"></a>
+# [1.9.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.8.1...1.9.0) (2020-01-15)
+
+
+### Features
+
+* **daterangepicker:** added daterangepicker wrapper ([28f8c43](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/28f8c43))
+
+<a name="1.8.1"></a>
+# [1.8.1](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.8.0...1.8.1) (2019-11-09)
+
+
 <a name="1.8.0"></a>
 # [1.8.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.7.0...1.8.0) (2018-07-25)
 
